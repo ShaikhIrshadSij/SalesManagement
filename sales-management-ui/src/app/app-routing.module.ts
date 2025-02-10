@@ -5,6 +5,7 @@ import { CarModelFormComponent } from "./components/car-model-form/car-model-for
 import { SalesmanReportComponent } from "./components/salesman-report/salesman-report.component"
 import { LoginComponent } from "./components/login/login.component"
 import { AuthGuard } from "./guards/auth.guard"
+import { SalesReportsComponent } from './components/sales-reports/sales-reports.component'
 
 const routes: Routes = [
     { path: "", redirectTo: "/car-models", pathMatch: "full" },
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: "car-models/new", component: CarModelFormComponent, canActivate: [AuthGuard] },
     { path: "car-models/:id", component: CarModelFormComponent, canActivate: [AuthGuard] },
     { path: "salesman-report", component: SalesmanReportComponent, canActivate: [AuthGuard] },
+    { path: 'sales-reports', component: SalesReportsComponent, canActivate: [AuthGuard] },
     { path: "**", redirectTo: "/car-models" },
 ]
 

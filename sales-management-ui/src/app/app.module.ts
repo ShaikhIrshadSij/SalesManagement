@@ -12,9 +12,10 @@ import { NotificationService } from "./services/notification.service"
 import { AppRoutingModule } from './app-routing.module'
 import { ApiInterceptor } from './interceptors/http.interceptor'
 import { LoginComponent } from './components/login/login.component'
+import { SalesReportsComponent } from './components/sales-reports/sales-reports.component'
 
 @NgModule({
-    declarations: [AppComponent, CarModelListComponent, CarModelFormComponent, SalesmanReportComponent, LoginComponent],
+    declarations: [AppComponent, CarModelListComponent, CarModelFormComponent, SalesmanReportComponent, LoginComponent, SalesReportsComponent],
     imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, FormsModule],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

@@ -7,6 +7,8 @@
         <a routerLink="/car-models" routerLinkActive="active" class="text-white">Car Models</a>
         <a routerLink="/salesman-report" routerLinkActive="active" *ngIf="isAdmin" class="text-white">Salesman
           Report</a>
+        <a routerLink="/sales-reports" routerLinkActive="active" *ngIf="isAdmin" class="text-white">Sales
+          Report</a>
       </nav>
       <div *ngIf="currentUser" class="user-info d-flex align-items-center gap-2">
         <span>Welcome, {{ currentUser.username }}</span>

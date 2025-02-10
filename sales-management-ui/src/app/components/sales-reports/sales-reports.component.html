@@ -1,0 +1,91 @@
+<div class="container my-4">
+    <h2 class="mb-4">Sales Reports</h2>
+
+    <!-- Salesman Commission Report -->
+    <section class="mb-4">
+        <h3 class="mb-3">Salesman Commission Report</h3>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Salesman Name</th>
+                    <th>Last Year Sales</th>
+                    <th>Total Commission</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of salesmanCommissionReports">
+                    <td>{{ report.salesmanName }}</td>
+                    <td>{{ report.lastYearSales | currency }}</td>
+                    <td>{{ report.totalCommission | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Sales by Brand Report -->
+    <section class="mb-4">
+        <h3 class="mb-3">Sales by Brand Report</h3>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Brand Name</th>
+                    <th>Total Sales</th>
+                    <th>Total Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of salesByBrandReports">
+                    <td>{{ report.brandName }}</td>
+                    <td>{{ report.totalSales }}</td>
+                    <td>{{ report.totalRevenue | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Sales by Class Report -->
+    <section class="mb-4">
+        <h3 class="mb-3">Sales by Class Report</h3>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Class Name</th>
+                    <th>Total Sales</th>
+                    <th>Total Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of salesByClassReports">
+                    <td>{{ report.className }}</td>
+                    <td>{{ report.totalSales }}</td>
+                    <td>{{ report.totalRevenue | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Top Selling Models Report -->
+    <section>
+        <h3 class="mb-3">Top Selling Models Report</h3>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Model Name</th>
+                    <th>Brand Name</th>
+                    <th>Class Name</th>
+                    <th>Total Sales</th>
+                    <th>Total Revenue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let report of topSellingModelReports">
+                    <td>{{ report.modelName }}</td>
+                    <td>{{ report.brandName }}</td>
+                    <td>{{ report.className }}</td>
+                    <td>{{ report.totalSales }}</td>
+                    <td>{{ report.totalRevenue | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
