@@ -1,0 +1,34 @@
+<div class="container py-4">
+    <h2 class="text-center mb-4">Car Models</h2>
+
+    <!-- Search Bar -->
+    <div class="input-group mb-3 w-50 mx-auto">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup.enter)="searchModels()"
+            placeholder="Search by model name or code">
+        <button class="btn btn-primary" (click)="searchModels()">Search</button>
+    </div>
+
+    <!-- Add New Model Button -->
+    <div class="d-flex justify-content-end mb-3">
+        <a routerLink="/car-models/new" class="btn btn-success">Add New Model</a>
+    </div>
+
+    <!-- Car Models Grid -->
+    <div class="row">
+        <div *ngFor="let model of carModels" class="col-md-4 col-lg-3 mb-4">
+            <div class="card shadow-sm h-100">
+                <img [src]="model.imagePaths[0] || 'assets/not-found.png'" class="card-img-top"
+                    (error)="setDefaultImage($event)" alt="{{ model.modelName }}">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ model.modelName }}</h5>
+                    <p class="card-text">{{ model.brand }} - {{ model.class }}</p>
+                    <p class="fw-bold">Price: {{ model.price | currency }}</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a [routerLink]="['/car-models', model.modelId]" class="btn btn-primary btn-sm">Edit</a>
+                    <button (click)="deleteModel(model.modelId)" class="btn btn-danger btn-sm">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

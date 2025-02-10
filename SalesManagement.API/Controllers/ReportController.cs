@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SalesManagement.API.Interfaces;
 using SalesManagement.API.Models;
 
@@ -8,7 +6,7 @@ namespace SalesManagement.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ReportController : ControllerBase
     {
         private readonly IReportService _reportService;

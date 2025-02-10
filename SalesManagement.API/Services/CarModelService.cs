@@ -52,21 +52,28 @@ namespace SalesManagement.API.Services
         {
             using var connection = new SqlConnection(_connectionString);
             var query = @"
-                    SELECT cm.*, mi.ImagePath
-                    FROM CarModels cm
-                    LEFT JOIN ModelImages mi ON cm.ModelId = mi.ModelId
-                    WHERE cm.ModelId = @Id";
+                SELECT cm.*, 
+                       mi.ImagePath, 
+                       b.BrandName AS Brand, 
+                       c.ClassName AS Class
+                FROM CarModels cm
+                LEFT JOIN ModelImages mi ON cm.ModelId = mi.ModelId
+                LEFT JOIN Brands b ON cm.BrandId = b.BrandId
+                LEFT JOIN Classes c ON cm.ClassId = c.ClassId
+                WHERE cm.ModelId = @Id";
 
             var modelDictionary = new Dictionary<int, CarModel>();
 
-            var models = await connection.QueryAsync<CarModel, string, CarModel>(
+            var models = await connection.QueryAsync<CarModel, string, string, string, CarModel>(
                 query,
-                (model, imagePath) =>
+                (model, imagePath, brand, className) =>
                 {
                     if (!modelDictionary.TryGetValue(model.ModelId, out var carModel))
                     {
                         carModel = model;
                         carModel.ImagePaths = new List<string>();
+                        carModel.Brand = brand;
+                        carModel.Class = className;
                         modelDictionary.Add(model.ModelId, carModel);
                     }
                     if (!string.IsNullOrEmpty(imagePath))
@@ -76,10 +83,10 @@ namespace SalesManagement.API.Services
                     return carModel;
                 },
                 new { Id = id },
-                splitOn: "ImagePath"
+                splitOn: "ImagePath, Brand, Class"
             );
 
-            return modelDictionary.Values.FirstOrDefault(); // Safe retrieval
+            return modelDictionary.Values.FirstOrDefault();
         }
 
 

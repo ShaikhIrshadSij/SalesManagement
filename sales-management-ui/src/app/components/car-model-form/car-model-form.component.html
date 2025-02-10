@@ -1,0 +1,73 @@
+<div class="container py-4">
+    <h2 class="text-center mb-4">{{ isEditMode ? 'Edit' : 'Add' }} Car Model</h2>
+    <form [formGroup]="carModelForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="brand" class="form-label">Brand *</label>
+            <select id="brand" class="form-select" formControlName="brand">
+                <option value="">Select Brand</option>
+                <option value="Audi">Audi</option>
+                <option value="Jaguar">Jaguar</option>
+                <option value="Land Rover">Land Rover</option>
+                <option value="Renault">Renault</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="class" class="form-label">Class *</label>
+            <select id="class" class="form-select" formControlName="class">
+                <option value="">Select Class</option>
+                <option value="A-Class">A-Class</option>
+                <option value="B-Class">B-Class</option>
+                <option value="C-Class">C-Class</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="modelName" class="form-label">Model Name *</label>
+            <input type="text" id="modelName" class="form-control" formControlName="modelName">
+        </div>
+
+        <div class="mb-3">
+            <label for="modelCode" class="form-label">Model Code *</label>
+            <input type="text" id="modelCode" class="form-control" formControlName="modelCode">
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" class="form-control" formControlName="description"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="features" class="form-label">Features</label>
+            <textarea id="features" class="form-control" formControlName="features"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" id="price" class="form-control" formControlName="price">
+        </div>
+
+        <div class="mb-3">
+            <label for="dateOfManufacturing" class="form-label">Date of Manufacturing</label>
+            <input type="date" id="dateOfManufacturing" class="form-control" formControlName="dateOfManufacturing">
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" id="isActive" class="form-check-input" formControlName="isActive">
+            <label for="isActive" class="form-check-label">Active</label>
+        </div>
+
+        <div class="mb-3">
+            <label for="sortOrder" class="form-label">Sort Order</label>
+            <input type="number" id="sortOrder" class="form-control" formControlName="sortOrder">
+        </div>
+
+        <div class="mb-3">
+            <label for="imagePaths" class="form-label">Image Paths</label>
+            <input type="text" id="imagePaths" class="form-control" formControlName="imagePaths">
+        </div>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="!carModelForm.valid">
+            {{ isEditMode ? 'Update' : 'Create' }} Car Model
+        </button>
+    </form>
+</div>

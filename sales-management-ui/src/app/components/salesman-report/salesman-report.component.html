@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Salesman Commission Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Salesman Name</th>
+                <th>Last Year Sales</th>
+                <th>Total Commission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let report of salesmanReports">
+                <td>{{ report.salesmanName }}</td>
+                <td>{{ report.lastYearSales | currency }}</td>
+                <td>{{ report.totalCommission | currency }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

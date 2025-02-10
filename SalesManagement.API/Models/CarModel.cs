@@ -6,35 +6,25 @@ namespace SalesManagement.API.Models
     {
         public int ModelId { get; set; }
 
-        [Required]
-        public string Brand { get; set; }
+        public string? Brand { get; set; }
+                     
+        public string? Class { get; set; }
+                     
+        public string? ModelName { get; set; }
+                     
+        public string? ModelCode { get; set; }
+                     
+        public string? Description { get; set; }
+                     
+        public string? Features { get; set; }
 
-        [Required]
-        public string Class { get; set; }
+        public decimal? Price { get; set; }
 
-        [Required]
-        public string ModelName { get; set; }
+        public DateTime? DateOfManufacturing { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        [RegularExpression(@"^[a-zA-Z0-9]*$", ErrorMessage = "Only alphanumeric characters are allowed.")]
-        public string ModelCode { get; set; }
+        public bool? IsActive { get; set; }
 
-        [Required]
-        public string Description { get; set; }
-
-        [Required]
-        public string Features { get; set; }
-
-        [Required]
-        public decimal Price { get; set; }
-
-        [Required]
-        public DateTime DateOfManufacturing { get; set; }
-
-        public bool IsActive { get; set; }
-
-        public int SortOrder { get; set; }
+        public int? SortOrder { get; set; }
 
         public List<string> ImagePaths { get; set; }
     }

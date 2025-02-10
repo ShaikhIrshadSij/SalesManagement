@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SalesManagement.API.Interfaces;
 using SalesManagement.API.Models;
 
@@ -7,7 +6,7 @@ namespace SalesManagement.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class SalesmanController : ControllerBase
     {
         private readonly ISalesmanService _salesmanService;
@@ -18,7 +17,7 @@ namespace SalesManagement.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<Salesman>>> GetAllSalesmen()
         {
             var salesmen = await _salesmanService.GetAllSalesmenAsync();
@@ -26,7 +25,7 @@ namespace SalesManagement.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,Salesman")]
+        //[Authorize(Roles = "Admin,Salesman")]
         public async Task<ActionResult<Salesman>> GetSalesmanById(int id)
         {
             var salesman = await _salesmanService.GetSalesmanByIdAsync(id);
@@ -38,7 +37,7 @@ namespace SalesManagement.API.Controllers
         }
 
         [HttpPost("sale")]
-        [Authorize(Roles = "Salesman")]
+        //[Authorize(Roles = "Salesman")]
         public async Task<ActionResult<Sale>> AddSale([FromBody] Sale sale)
         {
             var addedSale = await _salesmanService.AddSaleAsync(sale);
@@ -46,7 +45,7 @@ namespace SalesManagement.API.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult<Salesman>> CreateSalesman([FromBody] CreateSalesmanModel model)
         {
             var salesman = new Salesman
